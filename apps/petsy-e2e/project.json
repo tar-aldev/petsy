@@ -1,0 +1,9 @@
+{
+  "name": "petsy-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/petsy-e2e/src",
+  "tags": [],
+  "implicitDependencies": ["petsy"],
+  "// targets": "to see all targets run: nx show project petsy-e2e --web",
+  "targets": {}
+}
