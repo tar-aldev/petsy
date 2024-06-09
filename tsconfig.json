@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@petsy/shadcn-components": ["libs/shadcn-components/src/index.ts"],
+      "@petsy/shadcn-components/*": ["libs/shadcn-components/src/lib/*"]
+    }
+  }
+}
