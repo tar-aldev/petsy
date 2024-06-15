@@ -6,6 +6,7 @@ import {
   uniqueIndex,
 } from 'drizzle-orm/pg-core';
 
+// TODO: update with schema needed for the project
 export const users = pgTable(
   'users',
   {
