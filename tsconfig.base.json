@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@petsy/db": ["libs/db/src/index.ts"],
       "@petsy/shadcn-components": ["libs/shadcn-components/src/index.ts"],
       "@petsy/shadcn-components/server": [
         "libs/shadcn-components/src/server.ts"
