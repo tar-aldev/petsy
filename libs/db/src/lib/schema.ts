@@ -1,5 +1,3 @@
-import { drizzle } from 'drizzle-orm/vercel-postgres';
-import { sql } from '@vercel/postgres';
 import {
   pgTable,
   serial,
@@ -8,7 +6,7 @@ import {
   uniqueIndex,
 } from 'drizzle-orm/pg-core';
 
-export const UsersTable = pgTable(
+export const users = pgTable(
   'users',
   {
     id: serial('id').primaryKey(),
