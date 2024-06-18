@@ -11,6 +11,11 @@ const Configuration: UserConfig = {
       issuePrefixes: ['CU-'],
     },
   },
+  ignores: [
+    (message: string) => {
+      return message.includes('chore(release)');
+    },
+  ],
 };
 
 export default Configuration;
