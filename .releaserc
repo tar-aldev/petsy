@@ -21,7 +21,11 @@
       {
         "assets": [
           "CHANGELOG.md"
-        ]
+        ],
+        "successComment": false,
+        "failComment": false,
+        "releasedLabels": false,
+        "addReleases": "top"
       }
     ]
   ]
