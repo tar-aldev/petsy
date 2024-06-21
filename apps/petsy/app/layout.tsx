@@ -1,3 +1,4 @@
+import { sfProDisplay } from '../fonts/sfProDisplay';
 import './global.css';
 
 export const metadata = {

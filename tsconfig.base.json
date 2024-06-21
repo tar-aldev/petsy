@@ -16,9 +16,15 @@
     "baseUrl": ".",
     "paths": {
       "@petsy/db": ["libs/db/src/index.ts"],
+      "@petsy/landing": ["libs/landing/src/index.ts"],
+      "@petsy/landing/server": ["libs/landing/src/server.ts"],
       "@petsy/shadcn-components": ["libs/shadcn-components/src/index.ts"],
       "@petsy/shadcn-components/server": [
         "libs/shadcn-components/src/server.ts"
+      ],
+      "@petsy/shared-components": ["libs/shared-components/src/index.ts"],
+      "@petsy/shared-components/server": [
+        "libs/shared-components/src/server.ts"
       ]
     }
   },
