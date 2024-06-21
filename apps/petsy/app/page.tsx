@@ -1,9 +1,5 @@
-import { Button } from '@petsy/shadcn-components';
+import { Landing } from '@petsy/landing';
 
 export default async function Index() {
-  return (
-    <div>
-      <Button>Test button</Button>
-    </div>
-  );
+  return <Landing />;
 }
