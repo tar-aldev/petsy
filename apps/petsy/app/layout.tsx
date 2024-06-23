@@ -1,5 +1,11 @@
-import { sfProDisplay } from '../fonts/sfProDisplay';
 import './global.css';
+import { Lato } from 'next/font/google';
+
+const lato = Lato({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-lato',
+});
 
 export const metadata = {
   title: 'Welcome to petsy',
@@ -13,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={`${lato.variable} font-sans`}>{children}</body>
     </html>
   );
 }
