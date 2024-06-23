@@ -7,7 +7,7 @@
     "dev": "nx run petsy:dev",
     "shadcn-ui": "shadcn-ui",
     "prepare": "husky",
-    "release": "semantic-release --dry-run"
+    "release": "semantic-release"
   },
   "private": true,
   "dependencies": {
