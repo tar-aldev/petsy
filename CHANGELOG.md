@@ -1,3 +1,11 @@
+## [1.0.1](https://github.com/tar-aldev/petsy/compare/v1.0.0...v1.0.1) (2024-06-23)
+
+
+### Bug Fixes
+
+* add missing dependency for semantic-release CU-86bzawj46 ([2f792f5](https://github.com/tar-aldev/petsy/commit/2f792f54186f6c6bf16664944a058dfc66d31971))
+* include changelog into assets CU-86bzawj46 ([4bf9e7f](https://github.com/tar-aldev/petsy/commit/4bf9e7fe6e9ebbf754f5c7e6419e3426afbf1133))
+
 # 1.0.0 (2024-06-23)
 
 
