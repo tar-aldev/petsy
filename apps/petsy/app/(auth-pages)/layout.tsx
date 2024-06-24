@@ -8,7 +8,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
       <div className="flex justify-end">
         <PawIcon className="w-20 h-auto" />
       </div>
-      <Typography>Hi Friend!</Typography>
+      <Typography component="h1">Hi Friend!</Typography>
       {children}
     </div>
   );
