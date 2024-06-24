@@ -1,5 +1,3 @@
-import { Typography } from '@petsy/shared-components';
+import { LoginPage } from '@petsy/login/server';
 
-export default function LoginPage() {
-  return <Typography component="h1">Sign in</Typography>;
-}
+export default LoginPage;
