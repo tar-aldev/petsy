@@ -1,19 +1,65 @@
+import { cn } from '@petsy/shadcn-components';
+import { cva, type VariantProps } from 'class-variance-authority';
+
 import type { ReactNode } from 'react';
 
-interface TypographyProps {
-  variant: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+type NonNullObject<T> = {
+  [K in keyof T]: T[K] extends null ? never : Exclude<T[K], null>;
+};
+
+type HeadingVariants = VariantProps<typeof headingVariants>;
+type TypographyVariantProps = Pick<HeadingVariants, 'component'> &
+  Pick<HeadingVariants, 'variant'>;
+
+interface TypographyProps extends NonNullObject<TypographyVariantProps> {
   children: ReactNode;
+  className?: string;
+  muted?: boolean;
 }
 
-export function Typography({ variant, children }: TypographyProps) {
-  const mapping: Record<TypographyProps['variant'], ReactNode> = {
-    h1: <h1 className="text-4xl font-bold">{children}</h1>,
-    h2: <h2 className="text-3xl font-bold">{children}</h2>,
-    h3: <h3 className="text-2xl font-bold">{children}</h3>,
-    h4: <h4 className="text-xl font-bold">{children}</h4>,
-    h5: <h5 className="text-lg font-bold">{children}</h5>,
-    h6: <h6 className="text-base font-bold">{children}</h6>,
-  };
+const headingVariants = cva('', {
+  variants: {
+    component: {
+      p: 'text-base',
+      h1: 'font-boldtext-4xl',
+      h2: 'font-bold text-3xl',
+      h3: 'font-bold text-2xl',
+      h4: 'font-bold text-xl',
+      h5: 'font-bold text-lg',
+      h6: 'font-bold text-base',
+    },
+    variant: {
+      p: 'text-base',
+      h1: 'text-4xl',
+      h2: 'text-3xl',
+      h3: 'text-2xl',
+      h4: 'text-xl',
+      h5: 'text-lg',
+      h6: 'text-base',
+    },
+  },
+  defaultVariants: {
+    component: 'h1',
+  },
+});
 
-  return mapping[variant];
+export function Typography({
+  component = 'p',
+  variant,
+  muted = false,
+  className,
+  children,
+}: TypographyProps) {
+  const Component = component;
+
+  return (
+    <Component
+      className={cn(
+        { 'text-slate-400': muted },
+        headingVariants({ component, variant: variant ?? component, className })
+      )}
+    >
+      {children}
+    </Component>
+  );
 }
