@@ -13,11 +13,11 @@ export function Landing() {
       <div className="flex p-4 w-full bottom-0 absolute min-h-72 h-[calc(33.3%+6.5rem)] z-20 bg-white">
         <section className="py-4 flex flex-col space-y-10">
           <div className="w-full space-y-2 text-center flex-1">
-            <Typography variant="h1">Petsy</Typography>
-            <p className="text-slate-400 text-center">
+            <Typography component="h1">Petsy</Typography>
+            <Typography muted className="text-center">
               Are you ready to find a new friend? Or you want to find a new home
               for your pet? Petsy will help you!
-            </p>
+            </Typography>
           </div>
 
           <div className="w-full space-y-2">
