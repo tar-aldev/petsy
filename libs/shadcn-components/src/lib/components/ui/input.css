@@ -1,0 +1,3 @@
+.input-container:focus-within svg {
+  stroke: hsl(var(--primary));
+}
