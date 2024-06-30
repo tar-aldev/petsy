@@ -1,4 +1,13 @@
-// React server components are async so you make database or API calls.
+import { Typography } from '@petsy/shared-components';
+import { LoginForm } from './LoginForm';
+
 export async function LoginPage() {
-  return <h1>LoginPage</h1>;
+  return (
+    <>
+      <Typography muted>Log In to your Petsy account!</Typography>
+      <div className="pt-16">
+        <LoginForm />
+      </div>
+    </>
+  );
 }
