@@ -1,3 +1,3 @@
-import { LoginPage } from '@petsy/login/server';
+import { LoginPage } from '@petsy/auth-login/server';
 
 export default LoginPage;
