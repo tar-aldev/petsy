@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/tar-aldev/petsy/compare/v1.1.0...v1.2.0) (2024-07-06)
+
+
+### Features
+
+* **signup:** added signup page CU-86bzavx75 ([3f902d3](https://github.com/tar-aldev/petsy/commit/3f902d307a163ba409c84eb6cede9c98cb4d7ab6))
+
 # [1.1.0](https://github.com/tar-aldev/petsy/compare/v1.0.1...v1.1.0) (2024-07-06)
 
 
