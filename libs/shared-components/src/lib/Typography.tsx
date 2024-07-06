@@ -55,7 +55,7 @@ export function Typography({
   return (
     <Component
       className={cn(
-        { 'text-gray-500': muted },
+        { 'text-gray-400': muted },
         headingVariants({ component, variant: variant ?? component, className })
       )}
     >
