@@ -1,5 +1,3 @@
-import { Typography } from '@petsy/shared-components';
+import { SignupPage } from '@petsy/auth-signup/server';
 
-export default function SignupPage() {
-  return <Typography variant="h1">Sign up</Typography>;
-}
+export default SignupPage;

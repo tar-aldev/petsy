@@ -15,11 +15,15 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@petsy/db": ["libs/db/src/index.ts"],
-      "@petsy/landing": ["libs/landing/src/index.ts"],
-      "@petsy/landing/server": ["libs/landing/src/server.ts"],
       "@petsy/auth-login": ["libs/auth/login/src/index.ts"],
       "@petsy/auth-login/server": ["libs/auth/login/src/server.ts"],
+      "@petsy/auth-signup": ["libs/auth/signup/src/index.ts"],
+      "@petsy/auth-signup/server": ["libs/auth/signup/src/server.ts"],
+      "@petsy/db": ["libs/db/src/index.ts"],
+      "@petsy/icons": ["libs/icons/src/index.ts"],
+      "@petsy/icons/server": ["libs/icons/src/server.ts"],
+      "@petsy/landing": ["libs/landing/src/index.ts"],
+      "@petsy/landing/server": ["libs/landing/src/server.ts"],
       "@petsy/shadcn-components": ["libs/shadcn-components/src/index.ts"],
       "@petsy/shared-components": ["libs/shared-components/src/index.ts"]
     }
