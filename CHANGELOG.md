@@ -1,3 +1,18 @@
+# [1.1.0](https://github.com/tar-aldev/petsy/compare/v1.0.1...v1.1.0) (2024-07-06)
+
+
+### Bug Fixes
+
+* fix tsconfig.base.json  CU-86bzavx57 ([e494483](https://github.com/tar-aldev/petsy/commit/e494483498a3e607448c7ca0f4ad435579a41367))
+
+
+### Features
+
+* extend Typography component CU-86bzavx57 ([194d9de](https://github.com/tar-aldev/petsy/commit/194d9dea4715e8c48470c0e0c21891ad7ba8a954))
+* **login:** add login lib CU-86bzavx57 ([5097334](https://github.com/tar-aldev/petsy/commit/5097334d5b03b688f85996e8c700bd1e0768b318))
+* **login:** add markup for login page CU-86bzavx57 ([ee1f447](https://github.com/tar-aldev/petsy/commit/ee1f4478713b49496e863563f028dc50f670f5e1))
+* **petsy:** add basic layout for auth pages CU-86bzavx57 ([9a732d8](https://github.com/tar-aldev/petsy/commit/9a732d859b383a154c3db30e5ef05f5dc384393e))
+
 ## [1.0.1](https://github.com/tar-aldev/petsy/compare/v1.0.0...v1.0.1) (2024-06-23)
 
 
