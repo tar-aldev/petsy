@@ -15,6 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@petsy/auth-config": ["libs/auth/auth-provider/src/index.ts"],
+      "@petsy/auth-config/server": ["libs/auth/auth-provider/src/server.ts"],
       "@petsy/auth-login": ["libs/auth/login/src/index.ts"],
       "@petsy/auth-login/server": ["libs/auth/login/src/server.ts"],
       "@petsy/auth-signup": ["libs/auth/signup/src/index.ts"],

@@ -15,10 +15,16 @@
         "assets": ["libs/db/*.md"]
       }
     },
-    "drizzle-kit": {
+    "drizzle-kit:push": {
       "executor": "nx:run-commands",
       "options": {
         "command": "pnpm drizzle-kit push --config=libs/db/src/lib/drizzle.config.ts"
+      }
+    },
+    "drizzle-kit:generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm drizzle-kit generate --config=libs/db/src/lib/drizzle.config.ts"
       }
     }
   }
