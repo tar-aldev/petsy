@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/tar-aldev/petsy/compare/v1.2.0...v1.3.0) (2024-08-23)
+
+
+### Features
+
+* add email password sign up CU-86c00qej5 ([d9fc9df](https://github.com/tar-aldev/petsy/commit/d9fc9dfde8c95850e9f1d601770515c721be1f74))
+
 # [1.2.0](https://github.com/tar-aldev/petsy/compare/v1.1.0...v1.2.0) (2024-07-06)
 
 
