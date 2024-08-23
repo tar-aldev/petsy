@@ -4,5 +4,5 @@ export * from './lib/components/ui/button';
 export * from './lib/components/ui/badge';
 export * from './lib/components/ui/form';
 export * from './lib/components/ui/input';
-
+export * from './lib/components/ui/alert';
 export { cn } from './lib/utils';

@@ -1,7 +1,7 @@
-import { Gallery } from './Gallery';
-import { Typography } from '@petsy/shared-components';
 import { Button } from '@petsy/shadcn-components';
+import { Typography } from '@petsy/shared-components';
 import Link from 'next/link';
+import { Gallery } from './Gallery';
 
 export function Landing() {
   return (
