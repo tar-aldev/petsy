@@ -1,5 +1,5 @@
 import { DrizzleAdapter } from '@auth/drizzle-adapter';
-import { accounts, db, users } from '@petsy/db';
+import { account, db, user } from '@petsy/db';
 import { findUserById } from '@petsy/db';
 import NextAuth from 'next-auth';
 import 'next-auth/jwt';
@@ -48,8 +48,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     // session: () => {},
   },
   adapter: DrizzleAdapter(db, {
-    usersTable: users,
-    accountsTable: accounts,
+    usersTable: user,
+    accountsTable: account,
   }),
   session: { strategy: 'jwt' },
   ...authConfig,

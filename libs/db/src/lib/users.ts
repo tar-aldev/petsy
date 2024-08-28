@@ -1,8 +1,8 @@
 import type { InferSelectModel } from 'drizzle-orm';
 import { db } from './db';
-import { users } from './usersSchema';
+import { user } from './userSchema';
 
-type SelectUser = InferSelectModel<typeof users>;
+type SelectUser = InferSelectModel<typeof user>;
 
 export function findUserByEmail(
   email: string,
@@ -13,7 +13,7 @@ export function findUserByEmail(
   withPassword?: false
 ): Promise<Omit<SelectUser, 'password'> | undefined>;
 export function findUserByEmail(email: string, withPassword?: boolean) {
-  return db.query.users.findFirst({
+  return db.query.user.findFirst({
     ...(!withPassword
       ? {
           columns: {
@@ -21,16 +21,16 @@ export function findUserByEmail(email: string, withPassword?: boolean) {
           },
         }
       : {}),
-    where: (users, { eq }) => eq(users.email, email),
+    where: (user, { eq }) => eq(user.email, email),
   });
 }
 
 export function findUserById(id: string) {
-  return db.query.users.findFirst({
+  return db.query.user.findFirst({
     columns: {
       password: false,
     },
-    where: (users, { eq }) => eq(users.id, id),
+    where: (user, { eq }) => eq(user.id, id),
   });
 }
 
@@ -38,5 +38,5 @@ export async function createUser(insertValue: {
   email: string;
   password: string;
 }) {
-  return db.insert(users).values(insertValue).returning();
+  return db.insert(user).values(insertValue).returning();
 }
