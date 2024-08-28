@@ -1,2 +1,2 @@
-export * from './accountsSchema';
-export * from './usersSchema';
+export * from './accountSchema';
+export * from './userSchema';
