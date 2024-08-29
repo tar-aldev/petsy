@@ -15,6 +15,12 @@
         "assets": ["libs/db/*.md"]
       }
     },
+    "seed": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm ts-node libs/db/src/lib/seed/insertRoles.ts"
+      }
+    },
     "drizzle-kit:push": {
       "executor": "nx:run-commands",
       "options": {

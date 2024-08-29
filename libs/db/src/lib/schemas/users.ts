@@ -1,3 +1,4 @@
+import { relations } from 'drizzle-orm';
 import {
   pgTable,
   text,
@@ -5,9 +6,10 @@ import {
   uniqueIndex,
   uuid,
 } from 'drizzle-orm/pg-core';
+import { rolesUsers } from './rolesUsers';
 
-export const user = pgTable(
-  'user',
+export const users = pgTable(
+  'users',
   {
     id: uuid('id').defaultRandom().primaryKey(),
     name: text('name'),
@@ -23,3 +25,7 @@ export const user = pgTable(
     };
   }
 );
+
+export const userRelations = relations(users, ({ many }) => ({
+  roleUser: many(rolesUsers),
+}));
