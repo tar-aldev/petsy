@@ -1,3 +1,15 @@
+# [1.4.0](https://github.com/tar-aldev/petsy/compare/v1.3.0...v1.4.0) (2024-08-31)
+
+
+### Bug Fixes
+
+* **db:** fix migrations & schema CU-86c02y1k9 ([d64a180](https://github.com/tar-aldev/petsy/commit/d64a1802928bd6aa099bab1546bdac943bbbca16))
+
+
+### Features
+
+* **db:** support for roles CU-86c02y1k9 ([ec75f47](https://github.com/tar-aldev/petsy/commit/ec75f476717eae0b797ef561e50d519d88bf3bd7))
+
 # [1.3.0](https://github.com/tar-aldev/petsy/compare/v1.2.0...v1.3.0) (2024-08-23)
 
 
