@@ -70,7 +70,7 @@ export const signup = async (
     await signIn('credentials', {
       email: user.email,
       password: password,
-      redirectTo: '/settings',
+      redirectTo: '/user/profile/animals',
     });
     return {
       success: 'Successfully signed up.',
