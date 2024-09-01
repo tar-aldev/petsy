@@ -5,4 +5,7 @@ export * from './lib/components/ui/badge';
 export * from './lib/components/ui/form';
 export * from './lib/components/ui/input';
 export * from './lib/components/ui/alert';
+export * from './lib/components/ui/avatar';
+export * from './lib/components/ui/card';
+
 export { cn } from './lib/utils';
