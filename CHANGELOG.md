@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/tar-aldev/petsy/compare/v1.4.0...v1.5.0) (2024-09-01)
+
+
+### Features
+
+* **profile:** basic profile page CU-86c05r10e ([3d1ed82](https://github.com/tar-aldev/petsy/commit/3d1ed82851649b1f04e4e93e4cef1162f0f089cf))
+
 # [1.4.0](https://github.com/tar-aldev/petsy/compare/v1.3.0...v1.4.0) (2024-08-31)
 
 
