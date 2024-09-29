@@ -26,12 +26,20 @@
       "@petsy/icons/server": ["libs/icons/src/server.ts"],
       "@petsy/landing": ["libs/landing/src/index.ts"],
       "@petsy/landing/server": ["libs/landing/src/server.ts"],
-      "@petsy/profile": ["libs/user/profile/src/index.ts"],
-      "@petsy/profile/server": ["libs/user/profile/src/server.ts"],
       "@petsy/shadcn-components": ["libs/shadcn-components/src/index.ts"],
+      "@petsy/shadcn-utils": ["libs/shadcn-utils/src/index.ts"],
+      "@petsy/shadcn-utils/server": ["libs/shadcn-utils/src/server.ts"],
+      "@petsy/shared-components": ["libs/shared-components/src/index.ts"],
+      "@petsy/shared-types": ["libs/shared/types/src/index.ts"],
+      "@petsy/shared-types/server": ["libs/shared/types/src/server.ts"],
+      "@petsy/shared-utils": ["libs/shared/utils/src/index.ts"],
+      "@petsy/shared-utils/server": ["libs/shared/utils/src/server.ts"],
+      "@petsy/user-animals": ["libs/user/animals/src/index.ts"],
+      "@petsy/user-animals/server": ["libs/user/animals/src/server.ts"],
+      "@petsy/user-profile": ["libs/user/profile/src/index.ts"],
+      "@petsy/user-profile/server": ["libs/user/profile/src/server.ts"],
       "@petsy/user-shared": ["libs/user/shared/src/index.ts"],
-      "@petsy/user-shared/server": ["libs/user/shared/src/server.ts"],
-      "@petsy/shared-components": ["libs/shared-components/src/index.ts"]
+      "@petsy/user-shared/server": ["libs/user/shared/src/server.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

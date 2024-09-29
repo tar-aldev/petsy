@@ -7,14 +7,30 @@ const { auth } = NextAuth(authConfig);
 
 const apiAuthPrefix = '/api/auth';
 
+const publicRoutes = ['/'];
+const authRoutes = ['/login', '/signup'];
+const profileRoute = '/user/profile/animals';
+
 const middleware = auth((req) => {
-  const { nextUrl } = req;
+  const { nextUrl, url, auth } = req;
   const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
+  const isAuthRoute = authRoutes.includes(nextUrl.pathname);
+  const isAuthenticated = !!auth;
 
   if (isApiAuthRoute) {
     return NextResponse.next();
   }
 
+  if (isAuthRoute) {
+    if (isAuthenticated) {
+      return NextResponse.redirect(new URL(profileRoute, url));
+    }
+    return NextResponse.next();
+  }
+
+  if (!auth && !publicRoutes.includes(nextUrl.pathname)) {
+    return NextResponse.redirect(new URL('/', url));
+  }
   // TODO: Add authorization based on roles
   return NextResponse.next();
 });

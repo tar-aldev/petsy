@@ -6,7 +6,7 @@ import { Slot } from '@radix-ui/react-slot';
 import type { ControllerProps, FieldPath, FieldValues } from 'react-hook-form';
 import { Controller, FormProvider, useFormContext } from 'react-hook-form';
 
-import { cn } from '../../utils';
+import { cn } from '@petsy/shadcn-utils';
 import { Label } from './label';
 
 const Form = FormProvider;
@@ -60,6 +60,7 @@ const useFormField = () => {
 
 type FormItemContextValue = {
   id: string;
+  required?: boolean;
 };
 
 const FormItemContext = React.createContext<FormItemContextValue>(
@@ -68,15 +69,15 @@ const FormItemContext = React.createContext<FormItemContextValue>(
 
 const FormItem = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => {
+  React.HTMLAttributes<HTMLDivElement> & { required?: boolean }
+>(({ className, required, ...props }, ref) => {
   const id = React.useId();
 
   return (
-    <FormItemContext.Provider value={{ id }}>
+    <FormItemContext.Provider value={{ id, required }}>
       <div
         ref={ref}
-        className={cn('space-y-2', className, 'relative form-item')}
+        className={cn('space-y-1', className, 'relative form-item')}
         {...props}
       />
     </FormItemContext.Provider>
@@ -87,7 +88,8 @@ FormItem.displayName = 'FormItem';
 const FormLabel = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root>
->(({ className, ...props }, ref) => {
+>(({ className, children, ...props }, ref) => {
+  const { required } = React.useContext(FormItemContext);
   const { error, formItemId } = useFormField();
 
   return (
@@ -95,11 +97,14 @@ const FormLabel = React.forwardRef<
       ref={ref}
       className={cn(
         error && 'text-destructive',
-        'absolute z-10 -top-2 px-2 bg-white rounded-md text-slate-500'
+        'z-10 -top-2  bg-white rounded-md text-slate-500'
       )}
       htmlFor={formItemId}
       {...props}
-    />
+    >
+      {children}
+      {required && ' *'}
+    </Label>
   );
 });
 FormLabel.displayName = 'FormLabel';

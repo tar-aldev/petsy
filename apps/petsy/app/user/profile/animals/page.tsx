@@ -1,3 +1,3 @@
-export default function Animals() {
-  return <>Animals page</>;
-}
+import { Animals } from '@petsy/user-animals/server';
+
+export default Animals;
