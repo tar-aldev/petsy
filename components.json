@@ -10,6 +10,6 @@
   },
   "aliases": {
     "components": "@petsy/shadcn-components/components",
-    "utils": "@petsy/shadcn-components/utils"
+    "utils": "@petsy/shadcn-utils"
   }
 }

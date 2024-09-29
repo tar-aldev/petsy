@@ -2,6 +2,6 @@
   stroke: hsl(var(--primary));
 }
 
-.form-item:focus-within label {
+/* .form-item:focus-within label {
   color: hsl(var(--primary));
-}
+} */

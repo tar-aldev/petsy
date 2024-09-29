@@ -1,7 +1,9 @@
-import './global.css';
-import { Lato } from 'next/font/google';
-import { SessionProvider } from 'next-auth/react';
 import { auth } from '@petsy/auth-config/server';
+import { Toaster } from '@petsy/shadcn-components';
+import { SessionProvider } from 'next-auth/react';
+import { Lato } from 'next/font/google';
+import './global.css';
+import { QueryClientProvider } from './providers/QueryClientProvider';
 
 const lato = Lato({
   subsets: ['latin'],
@@ -24,7 +26,12 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`${lato.variable} font-sans`}>
-        <SessionProvider session={session}>{children}</SessionProvider>
+        <SessionProvider session={session}>
+          <QueryClientProvider>
+            <Toaster />
+            {children}
+          </QueryClientProvider>
+        </SessionProvider>
       </body>
     </html>
   );

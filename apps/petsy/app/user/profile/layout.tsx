@@ -1,3 +1,3 @@
-import { ProfileLayout } from '@petsy/profile/server';
+import { ProfileLayout } from '@petsy/user-profile/server';
 
 export default ProfileLayout;

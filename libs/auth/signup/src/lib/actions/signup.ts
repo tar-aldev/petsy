@@ -6,35 +6,11 @@ import { hash } from 'bcryptjs';
 import type { SignUpFormValues } from '../formValidation/signupFormValidation';
 import { signupValidationSchema } from '../formValidation/signupFormValidation';
 import { AuthError } from 'next-auth';
-
-export type Success = { success: string };
-export type FormError = {
-  formError?: string;
-};
-export type FieldErrors = {
-  errors: Record<keyof SignUpFormValues, string | undefined>;
-};
-export type Failure = FormError | FieldErrors;
-
-export const isSuccess = (result: Success | Failure): result is Success => {
-  return !!(result as Success).success;
-};
-
-export const isFormError = (
-  result: Success | Failure
-): result is Required<FormError> => {
-  return !!(result as FormError)?.formError;
-};
-
-export const isFieldsError = (
-  result: Success | Failure
-): result is FieldErrors => {
-  return !!(result as FieldErrors)?.errors;
-};
+import type { FormActionFailure, Success } from '@petsy/shared-types';
 
 export const signup = async (
   credentials: SignUpFormValues
-): Promise<Success | Failure> => {
+): Promise<Success | FormActionFailure<SignUpFormValues>> => {
   const validationResult = signupValidationSchema.safeParse(credentials);
   if (validationResult.error) {
     const fieldErrors = validationResult.error.formErrors.fieldErrors;
@@ -72,6 +48,7 @@ export const signup = async (
       password: password,
       redirectTo: '/user/profile/animals',
     });
+
     return {
       success: 'Successfully signed up.',
     };
@@ -79,9 +56,9 @@ export const signup = async (
     if (error instanceof AuthError) {
       switch (error.type) {
         case 'CredentialsSignin':
-          return { formError: 'Invalid Credentials' };
+          return { error: 'Invalid Credentials' };
         default:
-          return { formError: 'Something went wrong' };
+          return { error: 'Something went wrong' };
       }
     }
 

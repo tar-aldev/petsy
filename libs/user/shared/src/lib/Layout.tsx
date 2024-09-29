@@ -5,8 +5,8 @@ import { Navigation } from './Navigation';
 
 export function Layout({ children }: { children: ReactNode }) {
   return (
-    <main>
-      <div className="p-4">{children}</div>
+    <main className="h-full pb-28">
+      <div className="p-4 h-full overflow-auto">{children}</div>
       <Navigation />
     </main>
   );

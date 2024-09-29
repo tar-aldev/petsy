@@ -1,5 +1,5 @@
 import React from 'react';
-import { cn } from '../../utils';
+import { cn } from '@petsy/shadcn-utils';
 import type { LucideIcon } from 'lucide-react';
 import './input.css';
 import type { VariantProps } from 'class-variance-authority';

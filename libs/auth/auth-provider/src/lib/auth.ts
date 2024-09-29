@@ -17,6 +17,7 @@ declare module 'next-auth' {
    * or the second parameter of the `session` callback, when using a database.
    */
   interface User {
+    id?: string;
     roles: Role[];
   }
 }
@@ -24,6 +25,7 @@ declare module 'next-auth' {
 declare module 'next-auth/jwt' {
   /** Returned by the `jwt` callback and `auth`, when using JWT sessions */
   interface JWT {
+    id: string;
     roles: Role[];
   }
 }
@@ -54,6 +56,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         if (!user) {
           return token;
         }
+
+        token.id = user?.id;
         token.name = user?.name;
         token.email = user?.email;
         token.roles = user?.roleUser.map(({ role }) => ({
@@ -66,6 +70,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       return token;
     },
     session: ({ session, token }) => {
+      if (token.id) {
+        session.user.id = token.id;
+      }
+
       if (token.email) {
         session.user.email = token.email;
       }

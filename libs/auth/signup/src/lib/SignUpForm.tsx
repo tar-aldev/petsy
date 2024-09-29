@@ -3,8 +3,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FacebookIcon, GoogleIcon } from '@petsy/icons';
 import {
-  Alert,
-  AlertDescription,
   Badge,
   Button,
   Form,
@@ -17,17 +15,16 @@ import {
   Input,
 } from '@petsy/shadcn-components';
 import { Typography } from '@petsy/shared-components';
+import { ExclamationTriangleIcon } from '@radix-ui/react-icons';
 import { KeyRound, UserRound } from 'lucide-react';
 import Link from 'next/link';
-import { useForm } from 'react-hook-form';
-import { isFieldsError, isFormError, signup } from './actions/signup';
-import type { SignUpFormValues } from './formValidation/signupFormValidation';
-import {
-  setValidationErrors,
-  signupValidationSchema,
-} from './formValidation/signupFormValidation';
 import { useState } from 'react';
-import { ExclamationTriangleIcon } from '@radix-ui/react-icons';
+import { useForm } from 'react-hook-form';
+import { isFieldsError, isFormError } from '@petsy/shared-types';
+import type { SignUpFormValues } from './formValidation/signupFormValidation';
+import { signupValidationSchema } from './formValidation/signupFormValidation';
+import { signup } from './actions/signup';
+import { setValidationErrors } from '@petsy/shared-utils';
 
 export function SignupForm() {
   const formProps = useForm<SignUpFormValues>({
@@ -47,7 +44,7 @@ export function SignupForm() {
     if (!result) return;
 
     if (isFormError(result)) {
-      setFormError(result.formError);
+      setFormError(result.error);
     }
 
     if (isFieldsError(result)) {
@@ -108,7 +105,9 @@ export function SignupForm() {
             </Typography>
           </div>
         )}
-        <Button className="w-full">Sign up</Button>
+        <Button className="w-full" type="submit">
+          Sign up
+        </Button>
 
         <div>
           <div className="flex items-center py-6">

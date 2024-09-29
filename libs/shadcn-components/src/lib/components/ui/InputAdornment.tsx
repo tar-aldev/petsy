@@ -1,7 +1,7 @@
 import type { VariantProps } from 'class-variance-authority';
 import { cva } from 'class-variance-authority';
 import type { LucideIcon } from 'lucide-react';
-import { cn } from '../../utils';
+import { cn } from '@petsy/shadcn-utils';
 
 const iconVariants = cva(
   'absolute top-1/2 transform -translate-y-1/2 text-muted-foreground',

@@ -1,4 +1,4 @@
-import { cn } from '@petsy/shadcn-components';
+import { cn } from '@petsy/shadcn-utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 
 import type { ReactNode } from 'react';

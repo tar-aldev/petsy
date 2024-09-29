@@ -2,7 +2,8 @@ import * as React from 'react';
 import { Slot, Slottable } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
 
-import { cn } from '../../utils';
+import { cn } from '@petsy/shadcn-utils';
+import type { LucideIcon } from 'lucide-react';
 
 const buttonVariants = cva(
   'inline-flex items-center justify-center whitespace-nowrap rounded-md text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
@@ -27,54 +28,85 @@ const buttonVariants = cva(
         xs: 'h-8 rounded-md px-2 text-sm',
         icon: 'h-10 w-10',
       },
-      iconPosition: {
-        start: '',
+      leftIcon: {
+        true: '',
+        false: '',
+      },
+      rightIcon: {
+        true: '',
+        false: '',
       },
     },
     defaultVariants: {
       variant: 'default',
       size: 'default',
+      leftIcon: false,
+      rightIcon: false,
     },
     compoundVariants: [
       {
         size: 'default',
-        iconPosition: 'start',
+        leftIcon: true,
         className: 'pl-12',
       },
       {
         size: 'sm',
-        iconPosition: 'start',
+        leftIcon: true,
         className: 'pl-10',
       },
       {
         size: 'xs',
-        iconPosition: 'start',
+        leftIcon: true,
         className: 'pl-8',
+      },
+      {
+        size: 'default',
+        rightIcon: true,
+        className: 'pr-12',
+      },
+      {
+        size: 'sm',
+        rightIcon: true,
+        className: 'pr-10',
+      },
+      {
+        size: 'xs',
+        rightIcon: true,
+        className: 'pr-8',
       },
     ],
   }
 );
 
-const iconVariants = cva('absolute', {
+const iconVariants = cva('', {
   variants: {
     size: {
-      default: 'w-7 h-7 left-4',
-      sm: 'w-5 h-5 left-3',
-      xs: 'h-4 h-4 left-2',
+      default: 'w-5 h-5',
+      sm: 'w-4 h-4',
+      xs: 'h-3 h-3',
+    },
+    position: {
+      left: 'left-4',
+      right: 'right-4',
     },
   },
   defaultVariants: {
     size: 'default',
+    position: 'left',
   },
 });
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
+    Omit<VariantProps<typeof buttonVariants>, 'leftIcon' | 'rightIcon'> {
   asChild?: boolean;
-  leftIcon?: React.ComponentType<React.SVGProps<unknown>>;
+  leftIcon?: React.ComponentType<React.SVGProps<unknown>> | LucideIcon;
+  leftIconClassName?: string;
+  rightIcon?: React.ComponentType<React.SVGProps<unknown>> | LucideIcon;
+  rightIconClassName?: string;
 }
 
+export type ButtonSize = ButtonProps['size'];
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
@@ -84,6 +116,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       asChild = false,
       children,
       leftIcon: LeftIcon,
+      leftIconClassName,
+      rightIcon: RightIcon,
+      rightIconClassName,
+      type = 'button',
       ...props
     },
     ref
@@ -92,21 +128,56 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <Comp
         className={cn(
+          'relative',
           buttonVariants({
             variant,
             size,
-            iconPosition: LeftIcon && size !== 'icon' ? 'start' : undefined,
+            leftIcon: !!LeftIcon,
+            rightIcon: !!RightIcon,
             className,
-          }),
-          'relative'
+          })
         )}
+        type={type}
         ref={ref}
         {...props}
       >
         <span>
           {LeftIcon && size !== 'icon' && (
-            <LeftIcon className={cn(iconVariants({ size }))} />
+            <span
+              className={iconVariants({
+                size,
+                position: 'left',
+                className: 'absolute top-[50%] translate-y-[-50%]',
+              })}
+            >
+              <LeftIcon
+                className={iconVariants({
+                  size,
+                  position: 'left',
+                  className: leftIconClassName,
+                })}
+              />
+            </span>
           )}
+
+          {RightIcon && size !== 'icon' && (
+            <span
+              className={iconVariants({
+                size,
+                position: 'right',
+                className: 'absolute top-[50%] translate-y-[-50%]',
+              })}
+            >
+              <RightIcon
+                className={iconVariants({
+                  size,
+                  position: 'right',
+                  className: rightIconClassName,
+                })}
+              />
+            </span>
+          )}
+
           <Slottable>{children}</Slottable>
         </span>
       </Comp>
