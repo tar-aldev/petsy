@@ -29,9 +29,9 @@
       "@petsy/profile": ["libs/user/profile/src/index.ts"],
       "@petsy/profile/server": ["libs/user/profile/src/server.ts"],
       "@petsy/shadcn-components": ["libs/shadcn-components/src/index.ts"],
+      "@petsy/shared-components": ["libs/shared-components/src/index.ts"],
       "@petsy/user-shared": ["libs/user/shared/src/index.ts"],
-      "@petsy/user-shared/server": ["libs/user/shared/src/server.ts"],
-      "@petsy/shared-components": ["libs/shared-components/src/index.ts"]
+      "@petsy/user-shared/server": ["libs/user/shared/src/server.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
