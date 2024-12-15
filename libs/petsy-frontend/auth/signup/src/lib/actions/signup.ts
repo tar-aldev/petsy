@@ -35,56 +35,60 @@ export const isFieldsError = (
 export const signup = async (
   credentials: SignUpFormValues
 ): Promise<Success | Failure> => {
-  const validationResult = signupValidationSchema.safeParse(credentials);
-  if (validationResult.error) {
-    const fieldErrors = validationResult.error.formErrors.fieldErrors;
-
-    return {
-      errors: {
-        email: fieldErrors.email?.[0],
-        password: fieldErrors.password?.[0],
-      },
-    };
-  }
-
-  const {
-    data: { email, password },
-  } = validationResult;
-
-  const existingUser = await findUserByEmail(email);
-
-  if (existingUser) {
-    return {
-      errors: {
-        email: 'User with the given email already exists',
-        password: undefined,
-      },
-    };
-  }
-
-  // insert new user into DB
-  const hashedPassword = await hash(password, 10);
-  const [user] = await createUser({ email: email, password: hashedPassword });
-
   try {
-    await signIn('credentials', {
-      email: user.email,
-      password: password,
-      redirectTo: '/user/profile/animals',
-    });
-    return {
-      success: 'Successfully signed up.',
-    };
-  } catch (error) {
-    if (error instanceof AuthError) {
-      switch (error.type) {
-        case 'CredentialsSignin':
-          return { formError: 'Invalid Credentials' };
-        default:
-          return { formError: 'Something went wrong' };
-      }
+    const validationResult = signupValidationSchema.safeParse(credentials);
+    if (validationResult.error) {
+      const fieldErrors = validationResult.error.formErrors.fieldErrors;
+
+      return {
+        errors: {
+          email: fieldErrors.email?.[0],
+          password: fieldErrors.password?.[0],
+        },
+      };
     }
 
-    throw error;
+    const {
+      data: { email, password },
+    } = validationResult;
+
+    const existingUser = await findUserByEmail(email);
+
+    if (existingUser) {
+      return {
+        errors: {
+          email: 'User with the given email already exists',
+          password: undefined,
+        },
+      };
+    }
+
+    // insert new user into DB
+    const hashedPassword = await hash(password, 10);
+    const [user] = await createUser({ email: email, password: hashedPassword });
+
+    try {
+      await signIn('credentials', {
+        email: user.email,
+        password: password,
+        redirectTo: '/user/profile/animals',
+      });
+      return {
+        success: 'Successfully signed up.',
+      };
+    } catch (error) {
+      if (error instanceof AuthError) {
+        switch (error.type) {
+          case 'CredentialsSignin':
+            return { formError: 'Invalid Credentials' };
+          default:
+            return { formError: 'Something went wrong' };
+        }
+      }
+
+      throw error;
+    }
+  } catch (error) {
+    console.log('ERR', error);
   }
 };
