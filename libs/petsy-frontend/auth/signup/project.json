@@ -1,0 +1,9 @@
+{
+  "name": "signup",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/petsy-frontend/auth/signup/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project signup --web",
+  "targets": {}
+}
