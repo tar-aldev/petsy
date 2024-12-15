@@ -1,0 +1,9 @@
+{
+  "name": "petsy-frontend",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/petsy-frontend",
+  "projectType": "application",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project petsy-frontend --web",
+  "targets": {}
+}
