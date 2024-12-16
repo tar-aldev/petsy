@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/tar-aldev/petsy/compare/v1.5.0...v1.6.0) (2024-12-16)
+
+
+### Features
+
+* **db:** add local neon db support CU-86c1bbf44 ([9fbc45e](https://github.com/tar-aldev/petsy/commit/9fbc45ef612261fd780cc1790621666457b3d999))
+
 # [1.5.0](https://github.com/tar-aldev/petsy/compare/v1.4.0...v1.5.0) (2024-09-01)
 
 
