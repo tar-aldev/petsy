@@ -1,19 +1,17 @@
 services:
-  postgres:
-    image: postgres:17 # Use the desired PostgreSQL version
+  db:
+    image: postgres
+    restart: always
+    # set shared memory limit when using docker-compose
+    shm_size: 128mb
     environment:
-      - POSTGRES_USER=${POSTGRES_USER} # Username for PostgreSQL
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD} # Password for PostgreSQL
-      - POSTGRES_DB=${POSTGRES_DB} # Name of the database to create
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
     ports:
-      - '5432:5432' # Expose port 5432 for connecting to the DB
-    volumes:
-      - db_data:/var/lib/postgresql/data # Persistent data storage
-    healthcheck:
-      test: ['CMD-SHELL', 'pg_isready -U postgres']
-      interval: 10s
-      timeout: 5s
-      retries: 5
+      - 5432:5432
 
-volumes:
-  db_data: # Ensure that the data is stored in a Docker volume for persistence
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
