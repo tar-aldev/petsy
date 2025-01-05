@@ -18,24 +18,40 @@
       "@petsy/auth-config": ["libs/petsy/auth/login/src/index.ts"],
       "@petsy/auth-config/server": ["libs/auth/auth-provider/src/server.ts"],
       "@petsy/auth-login": ["libs/petsy-frontend/auth/login/src/index.ts"],
-      "@petsy/auth-login/server": ["libs/auth/login/src/server.ts"],
+      "@petsy/auth-login/server": [
+        "libs/petsy-frontend/auth/login/src/server.ts"
+      ],
       "@petsy/auth-signup": ["libs/petsy-frontend/auth/signup/src/index.ts"],
-      "@petsy/auth-signup/server": ["libs/auth/signup/src/server.ts"],
+      "@petsy/auth-signup/server": [
+        "libs/petsy-frontend/auth/signup/src/server.ts"
+      ],
       "@petsy/db": ["libs/db/src/index.ts"],
       "@petsy/icons": ["libs/petsy-frontend/icons/src/index.ts"],
       "@petsy/icons/server": ["libs/icons/src/server.ts"],
       "@petsy/landing": ["libs/petsy-frontend/landing/src/index.ts"],
-      "@petsy/landing/server": ["libs/landing/src/server.ts"],
+      "@petsy/landing/server": ["libs/petsy-frontend/landing/src/server.ts"],
       "@petsy/profile": ["libs/petsy-frontend/user/profile/src/index.ts"],
-      "@petsy/profile/server": ["libs/user/profile/src/server.ts"],
-      "@petsy/shadcn-components": [
-        "libs/petsy-frontend/shadcn-components/src/index.ts"
+      "@petsy/profile/server": [
+        "libs/petsy-frontend/user/profile/src/server.ts"
       ],
+      "@petsy/user-settings": [
+        "libs/petsy-frontend/user/settings/src/index.ts"
+      ],
+      "@petsy/user-settings/server": [
+        "libs/petsy-frontend/user/settings/src/server.ts"
+      ],
+      "@petsy/shadcn-components": ["libs/shadcn-components/src/index.ts"],
       "@petsy/shared-components": [
         "libs/petsy-frontend/shared-components/src/index.ts"
       ],
+      "@petsy/user-animals": ["libs/petsy-frontend/user/animals/src/index.ts"],
+      "@petsy/user-animals/server": [
+        "libs/petsy-frontend/user/animals/src/server.ts"
+      ],
       "@petsy/user-shared": ["libs/petsy-frontend/user/shared/src/index.ts"],
-      "@petsy/user-shared/server": ["libs/user/shared/src/server.ts"]
+      "@petsy/user-shared/server": [
+        "libs/petsy-frontend/user/shared/src/server.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,23 +1,14 @@
-import { relations } from 'drizzle-orm';
-import {
-  pgTable,
-  text,
-  timestamp,
-  uniqueIndex,
-  uuid,
-} from 'drizzle-orm/pg-core';
-import { rolesUsers } from './rolesUsers';
+import { pgTable, text, uniqueIndex, uuid } from 'drizzle-orm/pg-core';
+import type { InferInsertModel } from 'drizzle-orm';
 
 export const users = pgTable(
   'users',
   {
     id: uuid('id').defaultRandom().primaryKey(),
     name: text('name'),
-    email: text('email').unique().notNull(),
-    emailVerified: timestamp('emailVerified', { mode: 'date' }),
-    password: text('password'),
-    createdAt: timestamp('createdAt').defaultNow().notNull(),
+    email: text('email').unique(),
     image: text('image'),
+    authUserId: text('auth_user_id').notNull(),
   },
   (users) => {
     return {
@@ -26,6 +17,4 @@ export const users = pgTable(
   }
 );
 
-export const userRelations = relations(users, ({ many }) => ({
-  roleUser: many(rolesUsers),
-}));
+export type InsertUser = InferInsertModel<typeof users>;

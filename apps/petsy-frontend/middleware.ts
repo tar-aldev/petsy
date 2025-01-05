@@ -1,27 +1,33 @@
-import { authConfig } from '@petsy/auth-config/server';
-import NextAuth from 'next-auth';
-
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 import { NextResponse } from 'next/server';
 
-const { auth } = NextAuth(authConfig);
+const isProtectedRoute = createRouteMatcher(['/user(.*)']);
+const authRoutes = ['/sign-in', '/sign-up'];
+const DEFAULT_LOGIN_REDIRECT = '/user/profile/animals';
 
-const apiAuthPrefix = '/api/auth';
+export default clerkMiddleware(async (auth, req) => {
+  const { nextUrl, url } = req;
+  console.log('MIDDLEWARE', nextUrl.pathname);
 
-const middleware = auth((req) => {
-  const { nextUrl } = req;
-  const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
+  const authState = await auth();
 
-  if (isApiAuthRoute) {
-    return NextResponse.next();
+  console.log('authState', authState);
+
+  // return;
+  if (authRoutes.includes(nextUrl.pathname) && !!authState.userId) {
+    console.log('REDIRECT');
+
+    return NextResponse.redirect(new URL(DEFAULT_LOGIN_REDIRECT, url));
   }
 
-  // TODO: Add authorization based on roles
-  return NextResponse.next();
+  if (isProtectedRoute(req)) await auth.protect();
 });
 
-export default middleware;
-// Optionally, don't invoke Middleware on some paths
-// Read more: https://nextjs.org/docs/app/building-your-application/routing/middleware#matcher
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+  matcher: [
+    // Skip Next.js internals and all static files, unless found in search params
+    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+    // Always run for API routes
+    '/(api|trpc)(.*)',
+  ],
 };

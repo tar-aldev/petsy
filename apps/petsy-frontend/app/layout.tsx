@@ -1,7 +1,6 @@
-import './global.css';
+import { ClerkProvider } from '@clerk/nextjs';
 import { Lato } from 'next/font/google';
-import { SessionProvider } from 'next-auth/react';
-import { auth } from '@petsy/auth-config/server';
+import './global.css';
 
 const lato = Lato({
   subsets: ['latin'],
@@ -19,13 +18,13 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const session = await auth();
-
   return (
-    <html lang="en">
-      <body className={`${lato.variable} font-sans`}>
-        <SessionProvider session={session}>{children}</SessionProvider>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={`${lato.variable} font-sans bg-body-background`}>
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

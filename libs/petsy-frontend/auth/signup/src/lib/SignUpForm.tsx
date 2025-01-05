@@ -3,8 +3,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FacebookIcon, GoogleIcon } from '@petsy/icons';
 import {
-  Alert,
-  AlertDescription,
   Badge,
   Button,
   Form,
@@ -20,16 +18,14 @@ import { Typography } from '@petsy/shared-components';
 import { KeyRound, UserRound } from 'lucide-react';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
-import { isFieldsError, isFormError, signup } from './actions/signup';
 import type { SignUpFormValues } from './formValidation/signupFormValidation';
-import {
-  setValidationErrors,
-  signupValidationSchema,
-} from './formValidation/signupFormValidation';
-import { useState } from 'react';
-import { ExclamationTriangleIcon } from '@radix-ui/react-icons';
+import { signupValidationSchema } from './formValidation/signupFormValidation';
 
-export function SignupForm() {
+export function SignupForm({
+  handleSignup,
+}: {
+  handleSignup: (values: SignUpFormValues) => void;
+}) {
   const formProps = useForm<SignUpFormValues>({
     defaultValues: {
       email: '',
@@ -38,22 +34,6 @@ export function SignupForm() {
     resolver: zodResolver(signupValidationSchema),
     reValidateMode: 'onChange',
   });
-  const { setError } = formProps;
-  const [formError, setFormError] = useState<string | undefined>();
-
-  const handleSignup = async (values: SignUpFormValues) => {
-    const result = await signup(values);
-
-    if (!result) return;
-
-    if (isFormError(result)) {
-      setFormError(result.formError);
-    }
-
-    if (isFieldsError(result)) {
-      setValidationErrors(result.errors, setError);
-    }
-  };
 
   return (
     <Form {...formProps}>
@@ -100,14 +80,14 @@ export function SignupForm() {
           }}
         />
 
-        {!!formError && (
+        {/* {!!formError && (
           <div className="flex p-1 items-center gap-2">
             <ExclamationTriangleIcon className="text-red-400" />
             <Typography variant="p" className="text-red-400">
               {formError}
             </Typography>
           </div>
-        )}
+        )} */}
         <Button className="w-full">Sign up</Button>
 
         <div>
@@ -140,7 +120,7 @@ export function SignupForm() {
           </Typography>
 
           <Button variant="link" className="w-full" asChild>
-            <Link href="/login">Log in</Link>
+            <Link href="/sign-in">Sign in</Link>
           </Button>
         </div>
       </form>

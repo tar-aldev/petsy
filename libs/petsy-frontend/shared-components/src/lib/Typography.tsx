@@ -29,7 +29,7 @@ const headingVariants = cva('', {
       h6: 'font-bold text-base',
     },
     variant: {
-      p: 'text-base',
+      p: 'text-base font-normal',
       h1: 'text-4xl',
       h2: 'text-3xl',
       h3: 'text-2xl',
