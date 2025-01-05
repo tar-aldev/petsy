@@ -22,10 +22,10 @@ export function Landing() {
 
           <div className="w-full space-y-2">
             <Button className="w-full" asChild>
-              <Link href="/login">Login</Link>
+              <Link href="/sign-in">Login</Link>
             </Button>
             <Button className="w-full" variant="outline" asChild>
-              <Link href="/signup">Signup</Link>
+              <Link href="/sign-up">Signup</Link>
             </Button>
           </div>
         </section>

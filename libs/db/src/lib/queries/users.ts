@@ -1,5 +1,6 @@
 import type { InferSelectModel } from 'drizzle-orm';
 import { db } from '../db';
+import type { InsertUser } from '../schemas';
 import { users } from '../schemas';
 
 type SelectUser = InferSelectModel<typeof users>;
@@ -66,9 +67,14 @@ export function findUserByIdWithRoles(id: string) {
   });
 }
 
-export async function createUser(insertValue: {
-  email: string;
-  password: string;
-}) {
+export async function createUser(insertValue: InsertUser) {
   return db.insert(users).values(insertValue).returning();
+}
+
+export async function createUserIfNotExists(insertValue: InsertUser) {
+  return db
+    .insert(users)
+    .values(insertValue)
+    .onConflictDoNothing({ target: users.authUserId })
+    .returning();
 }

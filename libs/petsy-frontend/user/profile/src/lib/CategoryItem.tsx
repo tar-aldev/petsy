@@ -16,7 +16,6 @@ export function CategoryItem({ Icon, href, label }: CategoryItemProps) {
   const pathName = usePathname();
 
   const isActive = pathName === href;
-  console.log('pathName', pathName, href);
 
   return (
     <Link
