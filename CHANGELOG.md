@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/tar-aldev/petsy/compare/v1.6.0...v1.7.0) (2025-01-26)
+
+
+### Features
+
+* **petsy-frontend:** implement basic auth with clerk CU-86c1btbdv ([5f8261a](https://github.com/tar-aldev/petsy/commit/5f8261a17a9ce72655c6317dc612207e81a08d9f))
+
 # [1.6.0](https://github.com/tar-aldev/petsy/compare/v1.5.0...v1.6.0) (2024-12-16)
 
 
