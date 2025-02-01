@@ -5,22 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1733769582743,
-      "tag": "0000_safe_sauron",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1736099393223,
-      "tag": "0001_rare_kate_bishop",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1736100101334,
-      "tag": "0002_noisy_callisto",
+      "when": 1738437320173,
+      "tag": "0000_clean_betty_ross",
       "breakpoints": true
     }
   ]

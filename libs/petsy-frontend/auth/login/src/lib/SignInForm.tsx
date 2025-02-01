@@ -10,12 +10,16 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
+  Alert,
+  AlertTitle,
+  AlertDescription,
 } from '@petsy/shadcn-components';
 import { Typography } from '@petsy/shared-components';
 import { UserRound, KeyRound } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import Link from 'next/link';
 import { FacebookIcon, GoogleIcon } from '@petsy/icons';
+import type { UserFacingError } from '@petsy/utils';
 
 export type SignInFormValues = {
   email: string;
@@ -23,8 +27,10 @@ export type SignInFormValues = {
 };
 
 export function SignInForm({
+  error,
   handleSignIn,
 }: {
+  error?: UserFacingError;
   handleSignIn: (values: SignInFormValues) => void;
 }) {
   const formProps = useForm<SignInFormValues>({
@@ -80,7 +86,12 @@ export function SignInForm({
 
         <div className="space-y-3">
           <Button className="w-full">Sign in</Button>
-
+          {error && (
+            <Alert variant="destructive">
+              <AlertTitle>{error.primaryMessage}</AlertTitle>
+              <AlertDescription>{error.secondaryMessage}</AlertDescription>
+            </Alert>
+          )}
           <Typography className="text-primary text-center">
             Forgot password?
           </Typography>
@@ -111,7 +122,7 @@ export function SignInForm({
           </Typography>
 
           <Button variant="link" className="w-full" asChild>
-            <Link href="/signup">Sign up</Link>
+            <Link href="/sign-up">Sign up</Link>
           </Button>
         </div>
       </form>

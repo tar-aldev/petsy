@@ -9,5 +9,8 @@ export * from './lib/components/ui/avatar';
 export * from './lib/components/ui/card';
 export * from './lib/components/ui/input-otp';
 export * from './lib/components/ui/dropdown-menu';
+export * from './lib/components/ui/toast';
+export * from './lib/components/ui/toaster';
+export * from './lib/components/ui/use-toast';
 
 export { cn } from './lib/utils';
