@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/tar-aldev/petsy/compare/v1.7.0...v1.8.0) (2025-02-01)
+
+
+### Features
+
+* **signup:** update and finalize sign up flow CU-86c1tgqk8 ([06a5d12](https://github.com/tar-aldev/petsy/commit/06a5d12578ab0f5ad29ef5a3069cfe4bf8465498))
+
 # [1.7.0](https://github.com/tar-aldev/petsy/compare/v1.6.0...v1.7.0) (2025-01-26)
 
 
