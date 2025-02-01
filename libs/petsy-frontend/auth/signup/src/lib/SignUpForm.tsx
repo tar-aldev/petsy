@@ -3,6 +3,9 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FacebookIcon, GoogleIcon } from '@petsy/icons';
 import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
   Badge,
   Button,
   Form,
@@ -20,10 +23,13 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import type { SignUpFormValues } from './formValidation/signupFormValidation';
 import { signupValidationSchema } from './formValidation/signupFormValidation';
+import type { UserFacingError } from '@petsy/utils';
 
 export function SignupForm({
+  error,
   handleSignup,
 }: {
+  error?: UserFacingError;
   handleSignup: (values: SignUpFormValues) => void;
 }) {
   const formProps = useForm<SignUpFormValues>({
@@ -80,14 +86,12 @@ export function SignupForm({
           }}
         />
 
-        {/* {!!formError && (
-          <div className="flex p-1 items-center gap-2">
-            <ExclamationTriangleIcon className="text-red-400" />
-            <Typography variant="p" className="text-red-400">
-              {formError}
-            </Typography>
-          </div>
-        )} */}
+        {error && (
+          <Alert variant="destructive">
+            <AlertTitle>{error.primaryMessage}</AlertTitle>
+            <AlertDescription>{error.secondaryMessage}</AlertDescription>
+          </Alert>
+        )}
         <Button className="w-full">Sign up</Button>
 
         <div>

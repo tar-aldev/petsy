@@ -62,7 +62,7 @@ module.exports = {
         sm: 'calc(var(--radius) - 4px)',
       },
       fontFamily: {
-        sans: ['var(--font-lato)'],
+        sans: ['var(--font-montserrat)'],
       },
       keyframes: {
         'caret-blink': {

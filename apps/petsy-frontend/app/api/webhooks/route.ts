@@ -59,11 +59,18 @@ export async function POST(req: Request) {
 
   if (eventType === 'user.created' && id) {
     console.log('PUT USER INTO DB', id);
+    const primaryEmail = evt.data.email_addresses.find(
+      (email) => email.id === evt.data.primary_email_address_id
+    );
 
     try {
       await createUser({
         authUserId: id,
-        name: evt.data.username,
+        firstName: evt.data.first_name,
+        lastName: evt.data.last_name,
+        // TODO: later on we may want to support multiple emails.
+        // For now we assume one user has one email
+        email: primaryEmail?.email_address,
       });
     } catch (error) {
       console.log('ERR', error);

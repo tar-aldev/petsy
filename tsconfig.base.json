@@ -34,12 +34,6 @@
       "@petsy/profile/server": [
         "libs/petsy-frontend/user/profile/src/server.ts"
       ],
-      "@petsy/user-settings": [
-        "libs/petsy-frontend/user/settings/src/index.ts"
-      ],
-      "@petsy/user-settings/server": [
-        "libs/petsy-frontend/user/settings/src/server.ts"
-      ],
       "@petsy/shadcn-components": ["libs/shadcn-components/src/index.ts"],
       "@petsy/shared-components": [
         "libs/petsy-frontend/shared-components/src/index.ts"
@@ -48,10 +42,18 @@
       "@petsy/user-animals/server": [
         "libs/petsy-frontend/user/animals/src/server.ts"
       ],
+      "@petsy/user-settings": [
+        "libs/petsy-frontend/user/settings/src/index.ts"
+      ],
+      "@petsy/user-settings/server": [
+        "libs/petsy-frontend/user/settings/src/server.ts"
+      ],
       "@petsy/user-shared": ["libs/petsy-frontend/user/shared/src/index.ts"],
       "@petsy/user-shared/server": [
         "libs/petsy-frontend/user/shared/src/server.ts"
-      ]
+      ],
+      "@petsy/utils": ["libs/petsy-frontend/utils/src/index.ts"],
+      "@petsy/utils/server": ["libs/petsy-frontend/utils/src/server.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

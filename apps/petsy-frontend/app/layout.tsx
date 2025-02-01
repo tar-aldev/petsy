@@ -1,11 +1,12 @@
 import { ClerkProvider } from '@clerk/nextjs';
-import { Lato } from 'next/font/google';
+import { Montserrat } from 'next/font/google';
 import './global.css';
+import { Toaster } from '@petsy/shadcn-components';
 
-const lato = Lato({
+const monserrat = Montserrat({
   subsets: ['latin'],
   weight: ['400', '700'],
-  variable: '--font-lato',
+  variable: '--font-montserrat',
 });
 
 export const metadata = {
@@ -21,8 +22,9 @@ export default async function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={`${lato.variable} font-sans bg-body-background`}>
+        <body className={`${monserrat.variable} font-sans bg-body-background`}>
           {children}
+          <Toaster />
         </body>
       </html>
     </ClerkProvider>
